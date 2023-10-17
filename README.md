@@ -24,6 +24,6 @@
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/student-books.git
-   cd student-books
+   git clone   https://github.com/bashar-22/StudentBooks.git
+   cd StudentBooks
 
