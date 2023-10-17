@@ -20,10 +20,3 @@
 
 **Student Books** aims to create a seamless experience for students to manage keep track of their borrowed books, discover new reading materials, and communicate with peers. For librarians, it simplifies book administration and provides valuable insights through detailed log records.
 
-## Installation
-
-1. Clone the repository:
-   ```bash
-   git clone   https://github.com/bashar-22/StudentBooks.git
-   cd StudentBooks
-
