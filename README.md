@@ -15,6 +15,8 @@
 - **Reservation Handling:** Librarians oversee and record book reservations in the system when a student requests a book.
 - **Return Management:** Facilitate the book return process and keep records of returns and due dates.
 - **Log Records:** Access a detailed history of book reservations and returns, aiding library management and student interaction.
+### Book Availability Status
+- **Real-Time Availability:** Check the current status of each book in real-time. You can see whether a book is available for borrowing or reserved by another student.
 
 ## Purpose
 
