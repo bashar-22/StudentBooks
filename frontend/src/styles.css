@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.css';
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+.ng-invalid:not(form){
+    border-left:5px solid red;
+}
+
+.ng-valid:not(form){
+    border-left:5px solid green;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+    /* Green Indicator */
+  .green-indicator {
+    display: inline-block;
+    width: 10px; /* Adjust the width and height as needed */
+    height: 10px;
+    background-color: green; /* Green color */
+    border-radius: 50%; /* Rounded shape for a circle */
+    margin-left: 5px; /* Adjust spacing from text as needed */
+  }
+  
+  /* Red Indicator */
+  .red-indicator {
+    display: inline-block;
+    width: 10px; /* Adjust the width and height as needed */
+    height: 10px;
+    background-color: red; /* Red color */
+    border-radius: 50%; /* Rounded shape for a circle */
+    margin-left: 5px; /* Adjust spacing from text as needed */
+  }
+ 

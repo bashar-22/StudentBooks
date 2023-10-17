@@ -1,0 +1,74 @@
+<div class="container pt-5 mb-4">
+    <form class="row g-3" (ngSubmit)="searchInLogs()">
+        <div class="col-md-1 d-flex align-items-center">
+            <label for="email" class="form-label mb-0">Email Address</label>
+        </div>
+        <div class="col-md-2">
+            <input type="email" class="form-control" id="email" placeholder="Enter email address" [(ngModel)]="email" name="email">
+        </div>
+        <div class="col-md-1 d-flex align-items-center">
+            <label for="fromDate" class="form-label mb-0">From Date</label>
+        </div>
+        <div class="col-md-2">
+           <input type="date" class="form-control" id="fromDate" [(ngModel)]="fromDate" name="fromDate">
+        </div>
+        <div class="col-md-1 d-flex align-items-center">
+            <label for="toDate" class="form-label mb-0">To Date</label>
+        </div>
+        <div class="col-md-2">
+            <input type="date" class="form-control" id="toDate" [(ngModel)]="toDate" name="toDate">
+        </div>
+        <div class="col-md-3 d-flex align-items-center">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+</div>
+
+
+  <div class="alert alert-danger" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+  
+  <div class="container pb-5">
+    <div class="ng-book-card card mb-3" *ngFor="let book of books">
+
+       
+            <div class="card-body">
+                <h2 class="card-title">
+                    {{ book.title }}
+                </h2>
+                
+                <!-- Display reservation_date -->
+                <p class="card-text">Reservation Date: {{ book.reservation_date | date:'dd/MM/yyyy' }}</p>
+
+                <!-- Display reservation_expiration_date and color indicator -->
+                <p class="card-text">
+                Reservation Expiration Date: {{ book.reservation_expiration_date | date:'dd/MM/yyyy' }}
+                </p>
+
+                <p class="card-text">
+                    Book Return Date: {{ book.return_date | date:'dd/MM/yyyy' }}
+                </p>
+
+                <p class="card-text">
+                    Serial Number: {{ book.serial_number }}
+                </p>
+        
+                <!-- Display User Email and Reservation Date -->
+                <p class="card-text">
+                    User Email: 
+                    <a href="mailto:{{ book.userEmail }}" target="_blank">{{ book.email }}</a>
+                </p>
+    
+            </div>
+      
+      
+    
+</div>
+
+
+  <div class="d-flex justify-content-center pb-4 mt-4">
+    <button class="btn btn-primary mx-2" (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+    <span class="mx-2">{{ currentPage }} / {{ totalPages }}</span>
+    <button class="btn btn-primary mx-2" (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+  </div>

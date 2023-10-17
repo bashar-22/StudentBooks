@@ -1,0 +1,38 @@
+
+<style>
+    .custom {
+      width: 200px  !important;
+     
+    }
+</style>
+<div>
+    <div class="d-flex align-items-center justify-content-center vh-100">
+        <div class="py-5">
+          <div class="py-5">
+            <a class="btn btn-primary btn-lg py-4 px-4 shadow-lg transition-all hover-bg-green-400 custom" routerLink="/my-current-books">
+              See My Current Books
+            </a>
+          </div>
+           
+            <div class="py-5">
+              <a class="btn btn-primary btn-lg py-4 px-4 shadow-lg transition-all hover-bg-green-400 custom" routerLink="/books" *ngIf="userType==='normal'">
+                Search Books
+              </a>
+              <a class="btn btn-primary btn-lg py-4 px-4 shadow-lg transition-all hover-bg-green-400 custom" routerLink="/books" *ngIf="userType==='admin'">
+                Books Operations
+              </a>
+            </div>
+
+             <div class="py-5">
+              <a class="btn btn-primary btn-lg py-4 px-4 shadow-lg transition-all hover-bg-green-400 custom" routerLink="/search-logs" *ngIf="userType==='admin'">
+                Search in History
+              </a>
+            </div>
+           
+          
+        </div>
+      </div>
+
+  </div>
+
+  

@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3" >
+  <a class="navbar-brand "  routerLink="/" href="#">My Library</a>
+  
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ng-container *ngIf="loggedIn; else loggedOutNav">
+    <ul class="navbar-nav mr-auto ">
+      <li class="nav-item ">
+        <a class="nav-link" routerLink="profile">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " (click)="logout($event) " href="#">Logout</a>
+      </li>
+     
+    </ul>
+    
+    
+    <span class="navbar-text">
+      Welcome,  {{ username }}
+    </span>
+    <ul class="navbar-nav ms-auto">
+      <button class="btn btn-primary" data-bs-target="#myModal" data-bs-toggle="modal" *ngIf="isAdmin"  (click)="onAddBookClick()">
+        Add New Book
+      </button>
+  </ul>
+ 
+  </ng-container>
+  <ng-template #loggedOutNav>
+    <a class="nav-link text-white" routerLink="/login" href="#">Login</a>
+  </ng-template>
+    
+  </div>
+</nav>
+
+
+

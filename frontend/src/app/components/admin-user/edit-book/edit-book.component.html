@@ -1,0 +1,65 @@
+<div class="container mt-5">
+    <div class="text-center pt-4">
+      <h1 class="h3 text-primary">
+        Edit Book
+      </h1>
+      <hr class="border-primary">
+    </div>
+  
+    <div class="m-auto pt-4">
+      <div class="container mt-5">
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <div class="alert alert-danger" *ngIf="errorMessages.length > 0">
+              <strong>Something went wrong:</strong>
+              <ul>
+                <li *ngFor="let errorMessage of errorMessages">{{ errorMessage }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <form (ngSubmit)="updateBook(bookForm)" enctype="multipart/form-data" #bookForm="ngForm">
+      <div class="mb-3">
+        <input type="text" name="title" [(ngModel)]="editedBook.title" placeholder="Title..." class="form-control" required #title="ngModel" maxlength="255">
+        <div *ngIf="title.invalid && (title.dirty || title.touched)" class="text-danger">
+          Title is required.
+        </div>
+      </div>
+      <div class="mb-3">
+        <input type="text" name="author" [(ngModel)]="editedBook.author" placeholder="Author..." class="form-control" required #author="ngModel" maxlength="255">
+        <div *ngIf="author.invalid && (author.dirty || author.touched)" class="text-danger">
+          Author is required.
+        </div>
+      </div>
+     
+      <div class="mb-3">
+        <input type="text" name="publisher" [(ngModel)]="editedBook.publisher" placeholder="Publisher..." class="form-control" maxlength="255">
+      </div>
+      <div class="mb-3">
+        <label for="language">Select Language:</label>
+        <select class="form-select" id="language" name="language" [(ngModel)]="editedBook.language">
+          <option value="">Select a Language</option>
+          <option *ngFor="let language of languages" [value]="language">{{ language }}</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <input type="text" name="isbn" [(ngModel)]="editedBook.isbn" placeholder="ISBN..." class="form-control" required #isbn="ngModel" maxlength="255">
+        <div *ngIf="isbn.invalid && (isbn.dirty || isbn.touched)" class="text-danger">
+          ISBN is required.
+        </div>
+      </div>
+      <div class="mb-3">
+        <input type="number" name="serial_number" [(ngModel)]="editedBook.serial_number" placeholder="Serial Number..." class="form-control" required pattern="[0-9]*" maxlength="10">
+        <div *ngIf="editedBook.serial_number.invalid && (editedBook.serial_number.dirty || editedBook.serial_number.touched)" class="text-danger">
+          Serial number is required and should be a maximum of 10 digits.
+        </div>
+      </div>
+
+
+      <button type="submit" class="btn btn-primary">Update Book</button>
+    </form>
+  </div>
+  

@@ -1,0 +1,77 @@
+<style>
+  /* Green Indicator */
+.green-indicator {
+  display: inline-block;
+  width: 10px; /* Adjust the width and height as needed */
+  height: 10px;
+  background-color: green; /* Green color */
+  border-radius: 50%; /* Rounded shape for a circle */
+  margin-left: 5px; /* Adjust spacing from text as needed */
+}
+
+/* Red Indicator */
+.red-indicator {
+  display: inline-block;
+  width: 10px; /* Adjust the width and height as needed */
+  height: 10px;
+  background-color: red; /* Red color */
+  border-radius: 50%; /* Rounded shape for a circle */
+  margin-left: 5px; /* Adjust spacing from text as needed */
+}
+</style>
+
+
+<div class="container mt-5" >
+    <div class="pt-4" style="cursor: pointer; margin-bottom: 20px;">
+        <a (click)="goBack()"
+           class="text-primary italic hover:text-secondary hover:border-bottom border-secondary pb-3 transition-all py-4">
+            &lt; Back to previous page
+        </a>
+    </div>
+
+    <h3 class="text-left text-xl font-bold text-gray-900 py-3">
+       <strong>{{ book.title }}</strong> 
+    </h3>
+
+
+    <div class="pt-3 pb-5 text-gray-900 text-lg">
+        <p class="font-bold text-xl text-black py-3">
+            <strong>Author:</strong> {{ book.author }}
+        </p>
+
+        <p class="text-base text-black py-3">
+            <strong>Language:</strong> {{ book.language }}
+        </p>
+
+        <p class="text-base text-black py-3">
+            <strong>Publisher:</strong> {{ book.publisher }}
+        </p>
+
+        <p class="text-base text-black py-3">
+            <strong>ISBN:</strong> {{ book.isbn }}
+        </p>
+        <p class="text-base text-black py-3">
+            <strong>Serial Number:</strong> {{ book.serial_number }}
+        </p>
+
+        <!-- Display User Email and Reservation Date -->
+        <div class="py-3">
+            <strong>User Email: </strong>
+            <a href="mailto:{{ book.userEmail }}" target="_blank">{{ book.user_email }}</a>
+        </div>
+    
+        <div class="py-3">
+            <strong>Reservation Date: </strong> {{ book.reservation_date | date:'dd/MM/yyyy' }}
+        </div>
+        <div class="py-3">
+            <strong>Reservation  Expiration Date:</strong> {{ book.reservation_expiration_date | date:'dd/MM/yyyy' }}
+            <span class="indicator" *ngIf="book.reservation_expiration_date">
+                <span [ngClass]="{
+                  'green-indicator': isReservationValid(book.reservation_expiration_date),
+                  'red-indicator': !isReservationValid(book.reservation_expiration_date)
+                }"></span>
+              </span>
+        </div>
+        </div>
+</div>
+

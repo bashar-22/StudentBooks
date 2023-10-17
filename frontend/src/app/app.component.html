@@ -1,0 +1,19 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <router-outlet></router-outlet>
+ 
+  <div class="container" *ngIf="isRootRoute()">
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-6 text-center">
+        <h1>Welcome to My Library Application</h1>
+        <p>Your one-stop solution for all your books!</p>
+        
+        <div class="btn-group" role="group">
+          <a routerLink="/signup" class="btn btn-primary">Sign Up</a>
+          <a routerLink="/login" class="btn btn-secondary">Login</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

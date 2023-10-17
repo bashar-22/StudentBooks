@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>Return Book</h2>
+<div mat-dialog-content>
+  <form #returnForm="ngForm">
+
+    <div class="alert alert-danger" [hidden]="!errorMessage">
+      {{errorMessage}}
+    </div>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" name="returnDate" ngModel required placeholder="Return Date" [(ngModel)]="returnDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="{ action: 'cancel' }">Cancel</button>
+  <button mat-button  [disabled]="!returnForm.valid"  cdkFocusInitial (click)="returnBook()">Return</button>
+</div>

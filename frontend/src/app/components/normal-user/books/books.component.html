@@ -1,0 +1,81 @@
+<form class="pt-5 mb-4" (ngSubmit)="searchBooks()" >
+    <div class="mb-3">
+      <label for="default-search" class="form-label mb-2">Search</label>
+      <div class="input-group">
+        <input type="search" [(ngModel)]="searchTerm" name="search" id="default-search" class="form-control" placeholder="Search by title or author" required>
+        <button type="submit" class="btn btn-success">Search</button>
+      </div>
+    </div>
+  </form>
+  <div class="alert alert-success" *ngIf="successMessage">
+    {{ successMessage }}
+  </div>
+  <div class="alert alert-danger" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+  
+  <div class="container pb-5">
+    <div class="ng-book-card card mb-3" *ngFor="let book of books">
+
+        <a class="text-decoration-none text-dark" [routerLink]="['/show-book', book.id]"> 
+            <div class="card-body">
+                <h2 class="card-title">
+                    {{ book.title }}
+                </h2>
+                <p class="card-text">{{ book.author }}</p>
+                <ng-container *ngIf="book.reservation_expiration_date !== null">
+                <!-- Display reservation_date -->
+                <p class="card-text">Reservation Date: {{ book.reservation_date | date:'dd/MM/yyyy' }}</p>
+
+                <!-- Display reservation_expiration_date and color indicator -->
+                <p class="card-text">
+                Reservation Expiration Date: {{ book.reservation_expiration_date | date:'dd/MM/yyyy' }}
+                <span class="indicator" [ngClass]="{
+                    'green-indicator': isReservationValid(book.reservation_expiration_date),
+                    'red-indicator': !isReservationValid(book.reservation_expiration_date)
+                  }"></span>
+                </p>
+            </ng-container>
+            </div>
+        </a> 
+      
+       
+    
+
+        <div  *ngIf="isAdmin"> 
+        <hr>
+        
+      <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+       
+        <div class="btn-group" role="group" aria-label="First group">
+           
+            <a type="button" class="btn btn-link font-italic text-success" [routerLink]="['/edit-book', book.id]">
+                Edit
+              </a>
+              <button class="btn btn-link text-primary" (click)="book.user_id ? returnBook(book.id) : reserveBook(book.id)">
+                {{ book.user_id ? 'Return' : 'Reserve' }}
+              </button>
+             
+        </div>
+       
+        <div class="input-group">
+            <form class="d-inline" (submit)="deleteBook(book.id)">
+                <button type="submit" class="btn btn-link text-danger">
+                    Delete
+                </button>
+            </form>
+       
+        </div>
+      </div>
+    </div>
+    
+    </div>
+</div>
+
+
+  <div class="d-flex justify-content-center pb-4">
+    <button class="btn btn-primary mx-2" (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+    <span class="mx-2">{{ currentPage }} / {{ totalPages }}</span>
+    <button class="btn btn-primary mx-2" (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+ 
