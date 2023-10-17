@@ -24,7 +24,7 @@
 
 ## Future Improvements
 
-**Student Books** will be enhanced by adding the following features and improvements to provide an even better experience for our users. Here are some of the future enhancements:
+**Student Books** will be enhanced by adding the following features and improvements to provide an even better experience for our users. Here are some of the future improvements:
 
 1. **Book Recommendations:** Implement a recommendation system that suggests books based on a student's reading history and interests.
 
