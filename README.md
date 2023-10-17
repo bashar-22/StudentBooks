@@ -13,7 +13,7 @@
 
 - **Book Management:** Add, edit, or update book information, including titles, authors, and details.
 - **Reservation Management:** Efficiently handle book reservations, ensuring students can secure the books they want.
-- **Return Management:** Facilitate the book return process and keep records of returns and due dates.
+- *Reservation Handling:** Librarians oversee and record book reservations in the system when a student requests a book.
 - **Log Records:** Access a detailed history of book reservations and returns, aiding library management and student interaction.
 
 ## Purpose
